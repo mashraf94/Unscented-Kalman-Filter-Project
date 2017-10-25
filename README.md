@@ -31,18 +31,10 @@ Here is the main protcol that main.cpp uses for uWebSocketIO in communicating wi
 
 ## Other Important Dependencies
 * cmake >= 3.5
-  * All OSes: [click here for installation instructions](https://cmake.org/install/)
-* make >= 4.1 (Linux, Mac), 3.81 (Windows)
-  * Linux: make is installed by default on most Linux distros
-  * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
-  * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
+* make >= 4.1
 * gcc/g++ >= 5.4
-  * Linux: gcc / g++ is installed by default on most Linux distros
-  * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
-  * Windows: recommend using [MinGW](http://www.mingw.org/)
 
 ## Basic Build Instructions
-
 1. Clone this repo.
 2. Make a build directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
@@ -54,16 +46,39 @@ Here is the main protcol that main.cpp uses for uWebSocketIO in communicating wi
 ### Initialize a UKF upon detection of a sensor measurement:
 1. Initialize UKF Vectors and Matrices:
    * State Vector x_: [Px, Py, v, yaw, yawdot]
-        1. RADAR Measurement: [rho, phi, rhodot]
+        1. LIDAR Measurement: [Px, Py]
+            * X Position = `Px;`
+            * Y Position = `Py;`
+            * Initialize Velocity v, Yaw Angle yaw, Turn Rate yawdot to `0`.
+        
+        2. RADAR Measurement: [rho, phi, rhodot]
            * X Position = `rho * cos(phi);`
            * Y Position = `rho * sin(phi);`
            * Initialize Velocity v, Yaw Angle yaw, Turn Rate yawdot to `0`.
            * Calculations based on the following visualization of the RADAR Measurements.
-           
-           <p align="center">
-<img align="center" src="./results/radar.png" alt="alt text" width=500 height=300>
-</p>
+            <p align="center">
+            <img align="center" src="./results/radar.png" alt="alt text" width=500 height=300>
+            </p>
+   
+   * State Covariance Matrix P_:
+      * Initialization for P_ is tuned manually for both LIDAR and RADAR measurements and the matrix below acquired the lowest RMSE results:
 
+         P_:
+
+               0.15     0     0     0     0
+
+                0      0.15   0     0     0
+
+                0       0     50    0     0
+
+                0       0     0     50    0
+
+                0       0     0     0     50
+
+       
+               
+
+   
 
 ### 2. Prediction
 ### 3. Update
