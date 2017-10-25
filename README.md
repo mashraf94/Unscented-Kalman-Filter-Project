@@ -57,10 +57,11 @@ Here is the main protcol that main.cpp uses for uWebSocketIO in communicating wi
         1. RADAR Measurement: [rho, phi, rhodot]
            * X Position = `rho * cos(phi);`
            * Y Position = `rho * sin(phi);`
-           * Initialize Velocity v, Yaw Angle yaw, Turn Rate yawdot to `0`
-           * Calculated based on the following visualization of the RADAR Measurements.
+           * Initialize Velocity v, Yaw Angle yaw, Turn Rate yawdot to `0`.
+           * Calculations based on the following visualization of the RADAR Measurements.
+           
            <p align="center">
-<img align="center" src="./results/radar.png" alt="alt text" width="400" height="600">
+<img align="center" src="./results/radar.png" alt="alt text" width=500 height=300>
 </p>
 
 
