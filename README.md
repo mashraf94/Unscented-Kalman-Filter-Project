@@ -146,11 +146,16 @@ The input indicates:
 ### The UKF implemented was tested on two datasets: DataSet 1 and its inverse DataSet 2
 
 #### DataSet 1:
-RMSE: 
-   * x_position: 0.0632
-   * y_position: 0.0834
-   * velocityX : 0.3092
-   * velocityY : 0.2000
+The following table represents a comparison of the RMSE values on Dataset 1 resulting from the Unscented vs the Extended Kalman Filters:
+***It's obvious that the UKF results are completely more accurate than the EKF***
+
+|RMSE|   UKF   |   EKF|
+|:---:|:-------:|:-----:|
+|x_position| 0.0632 | 0.0973 |
+|y_position| 0.0834 | 0.0855 |
+|x_velocity| 0.3092 | 0.4513 |
+|y_velocity| 0.2000 | 0.4399 |
+
 <p align="center">
 <img align="center" src="./results/ds1_0.75.png" alt="alt text">
 </p>
@@ -178,12 +183,17 @@ NIS:
 <img align="center" src="./results/RADAR_ds1.png" alt="alt text">
 </p>
 
-#### DataSet 2:
-RMSE: 
-   * x_position: 0.0637
-   * y_position: 0.0604
-   * velocityX : 0.3451
-   * velocityY : 0.1802
+#### Dataset 2:
+The following table represents a comparison of the RMSE values on Dataset 2 resulting from the Unscented vs the Extended Kalman Filters:
+***It's obvious that the UKF results are completely more accurate than the EKF***
+
+|RMSE|   UKF   |   EKF|
+|:---:|:-------:|:-----:|
+|x_position| 0.0637 | 0.0726 |
+|y_position| 0.0604 | 0.0967 |
+|x_velocity| 0.3451 | 0.4579 |
+|y_velocity| 0.1802 | 0.4966 |
+
 <p align="center">
 <img align="center" src="./results/ds2_0.75.png" alt="alt text">
 </p>
