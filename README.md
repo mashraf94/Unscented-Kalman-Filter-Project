@@ -154,6 +154,16 @@ RMSE:
 </p>
 *The green markers in the image above shows the estimated position of the object, which regardless of the noisy measurements is really accurate.
 
+* Position Plot of Estimated (Blue Markers) vs Ground Truth (Red Line)
+<p align="center">
+<img align="center" src="./results/ds1_pos.png" alt="alt text">
+</p>
+
+* Velocity Plot of Estimated (Blue Markers) vs Ground Truth (Red Line)
+<p align="center">
+<img align="center" src="./results/ds1_vel.png" alt="alt text">
+</p>
+
 NIS:
 * LIDAR Data with respect to X^2.950: 0.10 - X^2.050: 5.99
 <p align="center">
@@ -163,4 +173,36 @@ NIS:
 * RADAR Data with respect to X^2.950: 0.35 - X^2.050: 7.82
 <p align="center">
 <img align="center" src="./results/RADAR_ds1.png" alt="alt text">
+</p>
+
+#### DataSet 2:
+RMSE: 
+   * x_position: 0.0637
+   * y_position: 0.0604
+   * velocityX : 0.3451
+   * velocityY : 0.1802
+<p align="center">
+<img align="center" src="./results/ds2_0.75.png" alt="alt text">
+</p>
+*The green markers in the image above shows the estimated position of the object, which regardless of the noisy measurements is really accurate.
+
+* Position Plot of Estimated (Blue Markers) vs Ground Truth (Red Line)
+<p align="center">
+<img align="center" src="./results/ds2_pos.png" alt="alt text">
+</p>
+
+* Velocity Plot of Estimated (Blue Markers) vs Ground Truth (Red Line)
+<p align="center">
+<img align="center" src="./results/ds2_vel.png" alt="alt text">
+</p>
+
+NIS:
+* LIDAR Data with respect to X^2.950: 0.10 - X^2.050: 5.99
+<p align="center">
+<img align="center" src="./results/LIDAR_ds2.png" alt="alt text">
+</p>
+
+* RADAR Data with respect to X^2.950: 0.35 - X^2.050: 7.82
+<p align="center">
+<img align="center" src="./results/RADAR_ds2.png" alt="alt text">
 </p>
