@@ -152,8 +152,8 @@ RMSE:
 <p align="center">
 <img align="center" src="./results/ds1_0.75.png" alt="alt text">
 </p>
-*The green markers in the image above shows the estimated position of the object, which regardless of the noisy measurements is really accurate.
 
+*The green markers in the image above shows the estimated position of the object, which regardless of the noisy measurements is really accurate.
 
 * Position Plot of Estimated (Blue Markers) vs Ground Truth (Red Line)
 <p align="center">
@@ -185,8 +185,8 @@ RMSE:
 <p align="center">
 <img align="center" src="./results/ds2_0.75.png" alt="alt text">
 </p>
-*The green markers in the image above shows the estimated position of the object, which regardless of the noisy measurements is really accurate.
 
+*The green markers in the image above shows the estimated position of the object, which regardless of the noisy measurements is really accurate.
 
 * Position Plot of Estimated (Blue Markers) vs Ground Truth (Red Line)
 <p align="center">
