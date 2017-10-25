@@ -44,7 +44,15 @@ Here is the main protcol that main.cpp uses for uWebSocketIO in communicating wi
 
 ### 1. Initialization
 ### Initialize a UKF upon detection of a sensor measurement:
-1. Initialize UKF Vectors and Matrices:
+1. Initialize the UKF instant attributes
+   1. Declare the Dimensions of the State Vector `n_x_ = 5;` 
+   2. Declare the Dimensions of the Augmented State Vector `n_aug_ = 7;`
+   3. Calculate the Sigma Points' Spread Parameter `lambda_ = 3 - n_aug_;`
+   4. Calculate the Sigma Points' Weight Vector of Size `2*n_aug + 1` for each of the 15 sigma point:
+         * First Weight: `weights_(0) = lambda_ / (lambda_ + n_aug_);`
+         * All Remaining Weights: `weights_ = 1 / (2*(lambda_ + n_aug_));`
+
+2. Initialize UKF Vectors and Matrices:
    * State Vector x_: [Px, Py, v, yaw, yawdot]
         1. LIDAR Measurement: [Px, Py]
             * X Position = `Px;`
@@ -63,24 +71,26 @@ Here is the main protcol that main.cpp uses for uWebSocketIO in communicating wi
    * State Covariance Matrix P_:
       * Initialization for P_ is tuned manually for both LIDAR and RADAR measurements and the matrix below acquired the lowest RMSE results:
 
-         P_:
-
+         P_ :
+         
+              Px Var
                0.15     0     0     0     0
-
+                      Py Var
                 0      0.15   0     0     0
-
+                            V Var
                 0       0     50    0     0
-
+                                 Yaw Var
                 0       0     0     50    0
-
+                                       YawDot Var
                 0       0     0     0     50
-
-       
-               
-
+                
+   * Predicted Sigma Points `Xsig_pred_`: This matrix is initialized with zeros of size `(n_x_ x 2*n_aug_+1)` --> (5 x 15)
    
+3. Initialize time to `MeasurementPackage::timestamp_` to calculate `delta_t` between both current and next measurement.
+4. Set `is_initialized_` to `true` to start Prediction and Update Steps.
 
 ### 2. Prediction
+
 ### 3. Update
 ### 4. RMSE and NIS
 ### 5. Results
