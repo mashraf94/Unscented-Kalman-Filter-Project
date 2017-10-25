@@ -145,7 +145,8 @@ The input indicates:
 
 ### The UKF implemented was tested on two datasets: DataSet 1 and its inverse DataSet 2
 
-#### DataSet 1:
+### DataSet 1:
+#### RMSE
 The following table represents a comparison of the RMSE values on Dataset 1 resulting from the Unscented vs the Extended Kalman Filters:
 ***It's obvious that the UKF results are entirely more accurate than the EKF (less erroneous).***
 
@@ -172,7 +173,7 @@ The following table represents a comparison of the RMSE values on Dataset 1 resu
 <img align="center" src="./results/ds1_vel.png" alt="alt text">
 </p>
 
-NIS:
+#### NIS
 * LIDAR Data with respect to X^2.950: 0.10 - X^2.050: 5.99
 <p align="center">
 <img align="center" src="./results/LIDAR_ds1.png" alt="alt text">
@@ -183,7 +184,8 @@ NIS:
 <img align="center" src="./results/RADAR_ds1.png" alt="alt text">
 </p>
 
-#### Dataset 2:
+### Dataset 2:
+#### RMSE
 The following table represents a comparison of the RMSE values on Dataset 2 resulting from the Unscented vs the Extended Kalman Filters:
 ***It's obvious that the UKF results are entirely more accurate than the EKF (less erroneous).***
 
@@ -210,7 +212,7 @@ The following table represents a comparison of the RMSE values on Dataset 2 resu
 <img align="center" src="./results/ds2_vel.png" alt="alt text">
 </p>
 
-NIS:
+#### NIS
 * LIDAR Data with respect to X^2.950: 0.10 - X^2.050: 5.99
 <p align="center">
 <img align="center" src="./results/LIDAR_ds2.png" alt="alt text">
