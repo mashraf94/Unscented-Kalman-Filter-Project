@@ -42,6 +42,12 @@ Here is the main protcol that main.cpp uses for uWebSocketIO in communicating wi
 
 ---
 
+### The part implemented is all executed in the UKF instance method `UKF::ProcessMeasurement()` using the data input in the `MeasurementPackage` object: `meas_package`.
+The input indicates:
+1. Timestamp
+2. Raw Measurements from Sensor
+3. Sensor Type (RADAR or LASER)
+
 ### 1. Initialization
 ### Initialize a UKF upon detection of a sensor measurement:
 1. Initialize the UKF instant attributes
@@ -71,7 +77,7 @@ Here is the main protcol that main.cpp uses for uWebSocketIO in communicating wi
    * State Covariance Matrix P_:
       * Initialization for P_ is tuned manually for both LIDAR and RADAR measurements and the matrix below acquired the lowest RMSE results:
 
-         P_ :
+         P_ : Size (n_x_ x n_x_) --> (5 x 5)
          
               Px Var
                0.15     0     0     0     0
@@ -84,13 +90,21 @@ Here is the main protcol that main.cpp uses for uWebSocketIO in communicating wi
                                        YawDot Var
                 0       0     0     0     50
                 
-   * Predicted Sigma Points `Xsig_pred_`: This matrix is initialized with zeros of size `(n_x_ x 2*n_aug_+1)` --> (5 x 15)
+   * Predicted Sigma Points Matrix `Xsig_pred_`: This matrix is initialized with zeros of size `(n_x_ x 2*n_aug_+1)` --> (5 x 15)
    
 3. Initialize time to `MeasurementPackage::timestamp_` to calculate `delta_t` between both current and next measurement.
-4. Set `is_initialized_` to `true` to start Prediction and Update Steps.
+4. Set `is_initialized_` to `true` to start Prediction and Update Steps upon the next sensor measurement.
 
 ### 2. Prediction
+***Regardless of the type of input sensor type `meas_package.sensor_type_`:RADAR and LIDAR - the algorithm executes the same prediction functions***
+
+1. Calculate the Augmented State Vector `x_aug` and Augmented State Covariance `P_aug`.
+2. Generate 15 Augmented Sigma Points `Xsig_aug` for Previous estimated State Vector. Size > `(n_aug_ x 2*n_aug_+1)`: (7 x 15)
+3. Predict Sigma Points representing the Current State Vector `Xsig_pred_`. Size > `(n_x_ x 2*n_aug_+1)`: (5 x 15)
+4. Use predicted sigma points to estimate state mean and covariance
 
 ### 3. Update
+***LIDAR and RADAR sensor data are treated differently since LIDAR data are in CARTESIAN coordinates, while RADAR data are in POLAR coordinates***
+
 ### 4. RMSE and NIS
 ### 5. Results
