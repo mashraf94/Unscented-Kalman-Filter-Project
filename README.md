@@ -98,7 +98,7 @@ The input indicates:
 3. Initialize time to `MeasurementPackage::timestamp_` to calculate `delta_t` between both current and next measurement.
 4. Set `is_initialized_` to `true` to start Prediction and Update Steps upon the next sensor measurement.
 
-### 2. Prediction
+### 2. Prediction `UKF::Prediction()`
 ***Regardless of the type of input sensor type `meas_package.sensor_type_`:RADAR and LIDAR - the algorithm executes the same prediction functions***
 
 1. Calculate the Augmented State Vector `x_aug` and Augmented State Covariance `P_aug`.
@@ -106,7 +106,7 @@ The input indicates:
 3. Predict Sigma Points representing the Current State Vector `Xsig_pred_`. Size > `(n_x_ x 2*n_aug_+1)`: (5 x 15)
 4. Use predicted sigma points to estimate state mean `x_` and covariance `P_` using the precalculated `weights_`.
 
-### 3. Update
+### 3. Update and Correction `UKF::UpdateLidar()` & `UKF::UpdateRadar()`
 ***LIDAR and RADAR sensor data are treated differently since LIDAR data are in CARTESIAN coordinates, while RADAR data are in POLAR coordinates***
 
 1. Use Predicted Sigma Points `Xsig_pred_` and transform it to measurement space according to the sensor type:
